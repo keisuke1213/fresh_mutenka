@@ -1,3 +1,7 @@
+import Header from "../common/Header/header";
+
 export default function List() {
-    return <div>list</div>
+    return (
+        <Header />
+    )
 }
