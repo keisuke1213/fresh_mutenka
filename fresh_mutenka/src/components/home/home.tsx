@@ -1,3 +1,7 @@
+import Sidenav from "../common/sidenav/sidenav";
+
 export default function Home() {
-    return <div>home</div>
+    return (
+        <Sidenav />
+    )
 }
