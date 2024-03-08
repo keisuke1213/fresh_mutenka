@@ -1,6 +1,7 @@
-import Header from "../common/Header/header"
+import List from "../list/list";
+
 export default function Home() {
-    return (
-        <Header />
-    )
+    return(
+        <List />
+    ) 
 }
