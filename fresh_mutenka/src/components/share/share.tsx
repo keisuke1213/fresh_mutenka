@@ -1,3 +1,7 @@
+import Header from "../common/Header/header";
+
 export default function Share() {
-    return <div>share</div>
+    return (
+        <Header />
+    )
 }

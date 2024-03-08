@@ -36,11 +36,6 @@ export default function List() {
         },
     ]
 
-    // const nowList = (number) => {
-    //     let nowlist;
-    //     nowlist = lists.find((list) => list.number === number);
-    // }
-
     return (
         <div className="component-list">
             <table className={styles.list}>
@@ -54,6 +49,5 @@ export default function List() {
                 })}
             </table>
         </div>
-
     )
 }
