@@ -1,0 +1,8 @@
+.list {
+    border-collapse: collapse;
+  }
+
+.list td{
+    border: solid 1px black;
+    padding: 0;
+}
