@@ -39,6 +39,7 @@ export default function List() {
     return (
         <div className="component-list">
             <table className={styles.list}>
+                <tbody>
                 {lists.map((list) => {
                     return (
                         <tr style={list.number === 10 ? { background: "#ffe4e1" } : {}}>
@@ -47,6 +48,7 @@ export default function List() {
                         </tr>
                     )
                 })}
+                </tbody>
             </table>
         </div>
     )
