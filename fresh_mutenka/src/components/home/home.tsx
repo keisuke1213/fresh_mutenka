@@ -1,7 +1,11 @@
 import List from "../list/list";
+import Chat from "./chat/chat";
 
 export default function Home() {
     return(
-        <List />
+        <div>
+            <List />
+            <Chat />
+        </div>
     ) 
 }
