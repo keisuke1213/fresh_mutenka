@@ -1,3 +1,7 @@
+import List from "../list/list";
+
 export default function Home() {
-    return <div>home</div>
+    return(
+        <List />
+    ) 
 }
