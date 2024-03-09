@@ -1,5 +1,5 @@
 import Header from "../common/Header/header";
-import Sidenav from "../common/sidenav/sidenav";
+import FetchUserId from "../common/sidenav/fetchUserId";
 import List from "../list/list";
 import Chat from "./chat/chat";
 
@@ -8,7 +8,7 @@ export default function Home() {
     return(
         <div>
              <Header />
-            <Sidenav />
+             <FetchUserId />
             {/* <List />  */}
             <Chat />
         </div>
