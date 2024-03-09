@@ -6,9 +6,9 @@ import Chat from "./chat/chat";
 export default function Home() {
     return(
         <div>
-            {/* <Header />
+             <Header />
             <Sidenav />
-            <List /> */}
+            {/* <List />  */}
             <Chat />
         </div>
     ) 

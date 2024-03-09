@@ -19,4 +19,8 @@ export async function getResponse(message: string) {
       console.log( chatCompletion.choices[0].message.content)
       return chatCompletion.choices[0].message.content
 }
+
+export async function testMethod() {
+    console.log("sucucessed!")
+}
  

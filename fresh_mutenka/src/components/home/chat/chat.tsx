@@ -2,6 +2,7 @@
 import { useEffect } from "react";
 import  { useState } from "react";
 import {getResponse} from "../../../pages/api/chat"
+import { testMethod } from "../../../pages/api/chat";
 
 
 type ConversationType = {
@@ -15,6 +16,9 @@ export default function Chat() {
   
   const onClickAddText = async () => {
     const res = await getResponse(userText);
+    if (res?.includes("おめでとう") ) {
+      await testMethod();
+    }
     setMessages([...messages, {user:userText, chatgpt:res !== null ? res : ""}]);
     setUserText("")
   }
