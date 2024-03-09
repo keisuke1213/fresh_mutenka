@@ -5,8 +5,17 @@
 .list td{
     border: solid 1px black;
     padding: 0;
+    font-weight: bold;
+}
+
+.finallist{
+  background-color: #9EEFAA;
 }
 
 .nowlist{
-  background-color: lightgray;
+  background-color: pink;
+}
+
+.achievelist{
+	opacity: 0.5;
 }

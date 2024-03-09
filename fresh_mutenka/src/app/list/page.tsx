@@ -1,93 +1,144 @@
-'use client'
+// 'use client'
 
-import List from "@/components/list/list";
+// import List from "@/components/list/list";
 
-import { useState, useEffect } from 'react';
-import useSWR from 'swr';
+// import { useState, useEffect } from 'react';
+// import useSWR from 'swr';
 
-const initialLists = [
-    {
-        number: 100,
-        text: "a"
-    }, {
-        number: 90,
-        text: "b"
-    }, {
-        number: 80,
-        text: "a"
-    }, {
-        number: 70,
-        text: "b"
-    }, {
-        number: 60,
-        text: "a"
-    }, {
-        number: 50,
-        text: "b"
-    }, {
-        number: 40,
-        text: "b"
-    }, {
-        number: 30,
-        text: "a"
-    }, {
-        number: 20,
-        text: "b"
-    }, {
-        number: 10,
-        text: "a",
-    },
-]
+// const initialLists = [
+//     {
+//         contnet: "a",
+//         created_at: "",
+//         goal_id: "",
+//         id: "",
+//         is_achivement: false,
+//         is_final: false,
+//         is_now: false,
+//         is_pre: false,
+//         level: 100,
+//     }, {
+//         contnet: "a",
+//         created_at: "",
+//         goal_id: "",
+//         id: "",
+//         is_achivement: false,
+//         is_final: false,
+//         is_now: false,
+//         is_pre: false,
+//         level: 90,
+//     }, {
+//         contnet: "a",
+//         created_at: "",
+//         goal_id: "",
+//         id: "",
+//         is_achivement: false,
+//         is_final: false,
+//         is_now: false,
+//         is_pre: false,
+//         level: 80,
+//     }, {
+//         contnet: "a",
+//         created_at: "",
+//         goal_id: "",
+//         id: "",
+//         is_achivement: false,
+//         is_final: false,
+//         is_now: false,
+//         is_pre: false,
+//         level: 70,
+//     }, {
+//         contnet: "a",
+//         created_at: "",
+//         goal_id: "",
+//         id: "",
+//         is_achivement: false,
+//         is_final: false,
+//         is_now: false,
+//         is_pre: false,
+//         level: 60,
+//     }, {
+//         contnet: "a",
+//         created_at: "",
+//         goal_id: "",
+//         id: "",
+//         is_achivement: false,
+//         is_final: false,
+//         is_now: false,
+//         is_pre: false,
+//         level: 50,
+//     }, {
+//         contnet: "a",
+//         created_at: "",
+//         goal_id: "",
+//         id: "",
+//         is_achivement: false,
+//         is_final: false,
+//         is_now: false,
+//         is_pre: false,
+//         level: 40,
+//     }, {
+//         contnet: "a",
+//         created_at: "",
+//         goal_id: "",
+//         id: "",
+//         is_achivement: false,
+//         is_final: false,
+//         is_now: false,
+//         is_pre: false,
+//         level: 30,
+//     }, {
+//         contnet: "a",
+//         created_at: "",
+//         goal_id: "",
+//         id: "",
+//         is_achivement: false,
+//         is_final: false,
+//         is_now: false,
+//         is_pre: false,
+//         level: 20,
+//     }, {
+//         contnet: "a",
+//         created_at: "",
+//         goal_id: "",
+//         id: "",
+//         is_achivement: false,
+//         is_final: false,
+//         is_now: false,
+//         is_pre: false,
+//         level: 10,
+//     },
+// ]
 
-export default function Page() {
+// export default function Page() {
 
-    const fetcher = (url: string | URL | Request) => fetch(url).then(r => r.json())
-    const useUser = (level:string) => {
-        const { data, isLoading, error } = useSWR(`/api/goal/getById/${level}`, fetcher)
+//     const fetcher = (url: string | URL | Request) => fetch(url).then(r => r.json())
+//     const useUser = (goal_id: string) => {
+//         const { data, isLoading, error } = useSWR(`/api/goal/getById/${goal_id}`, fetcher)
 
-        return {
-            user: data,
-            isLoading,
-            isError: error
-        }
-    }
+//         return {
+//             user: data,
+//             isLoading,
+//             isError: error
+//         }
+//     }
 
-    // const MessageData = () => {
-    //     const { user, isLoading, isError } = useUser()
+//     const { user, isLoading, isError } = useUser("3d0a590b-07f6-4dc5-86f0-ba6433024cbe")
+//     const [goals, setGoals] = useState(initialLists)
 
-    //     if (isLoading) return <div>error</div>
-    //     if (isError) return <div>loading...</div>
-    //     return (
-    //         <div>a{user.message}</div>
-    //     )
-    // }
 
-    // let messageData=MessageData()
 
-    // const NumberData = () => {
-    //     const { user, isLoading, isError } = useUser()
+//     useEffect(() => {
+//         if (user) {
 
-    //     if (isLoading) return <div>error</div>
-    //     if (isError) return <div>loading...</div>
-    //     return (
-    //         user.number
-    //     )
-    // }
-    // let numberData = NumberData()
-    // console.log(numberData)
+//             const updatedLists = user;
 
-    const { user, isLoading, isError } = useUser("3d0a590b-07f6-4dc5-86f0-ba6433024cbe")
-    let numberData = user ? user.number : null;
-    const [goals, setGoals] = useState(initialLists)
+//             setGoals(updatedLists);
+//             console.log(user)
+//             console.log(goals.length)
+//         }
+//     }, [user]);
 
-    useEffect(() => {
-        // if (user) {
-        const updatedLists = goals.map(goal =>
-            goal.number === numberData ? { ...goal, text: user.message } : goal
-        );
-        setGoals(updatedLists);
-        // }
-    }, [user]);
 
-    return <List goals={goals} numberData={numberData}/>
-}
+//     return <List goals={goals} />
+// }
+
