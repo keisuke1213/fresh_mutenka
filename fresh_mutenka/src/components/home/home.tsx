@@ -1,12 +1,16 @@
-import List from "../list/list";
+import Header from "../common/Header/header";
 import Sidenav from "../common/sidenav/sidenav";
+import List from "../list/list";
+import Chat from "./chat/chat";
 
 export default function Home() {
-    return (
-        <>
-        {/* <Sidenav /> */}
-        <List />
-        </>
-    )
-
+  
+    return(
+        <div>
+             <Header />
+            <Sidenav />
+            {/* <List />  */}
+            <Chat />
+        </div>
+    ) 
 }
