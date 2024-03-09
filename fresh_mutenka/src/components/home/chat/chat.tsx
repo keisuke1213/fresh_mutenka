@@ -1,28 +1,34 @@
 "use client"
 import  { useState } from "react";
 
+type ConversationType = {
+  user:string;
+  chatgpt:string;
+}
 
 export default function Chat() {
-  const [text, setText] = useState("");
+  const [userText, setUserText] = useState("");
 
-  const [addText, setAddText] = useState("");
+  const [messages, setMessages] = useState<ConversationType[]>([]);
+
 
   
   const onClickAddText = () => {
-    setAddText(text);
-    setText("");
+    setMessages([...messages, {user:userText, chatgpt:""}]);
+    setUserText("");
   }
 
   return (
     <div>
         <div>
-            <p>You</p>
-            {addText}
+            {messages.map((message,index)=>(
+                <p key={index}>You: {message.user}</p>
+            ))}
         </div>
         <div>
 
         </div>
-        <input value={text} type="text" onChange={(event)=>setText(event.target.value)}></input>
+        <input value={userText} type="text" onChange={(event)=>setText(event.target.value)}></input>
         <button onClick={onClickAddText}></button>
     </div>
   );
