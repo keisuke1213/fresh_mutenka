@@ -2,6 +2,8 @@
 import { useEffect } from "react";
 import  { useState } from "react";
 import {getResponse} from "../../../pages/api/chat"
+import { testMethod } from "../../../pages/api/chat";
+
 
 type ConversationType = {
   user:string;
@@ -9,23 +11,17 @@ type ConversationType = {
 }
 
 export default function Chat() {
-  const [userText, setUserText] = useState("");
+  const [userText, setUserText]   = useState("");
   const [messages, setMessages] = useState<ConversationType[]>([]);
   
-  useEffect(() => {
-    getResponse().then(data=>{
-      const formattedData = data.map(item=>)
-    })
-  },[])
-  
   const onClickAddText = async () => {
-    setMessages([...messages, {user:userText, chatgpt:""}]);
-    setUserText("");
-     await getResponse();
-    
-    
+    const res = await getResponse(userText);
+    if (res?.includes("おめでとう") ) {
+      await testMethod();
+    }
+    setMessages([...messages, {user:userText, chatgpt:res !== null ? res : ""}]);
+    setUserText("")
   }
-
   return (
     <div>
         <div>
