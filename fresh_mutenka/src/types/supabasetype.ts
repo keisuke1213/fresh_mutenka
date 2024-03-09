@@ -15,35 +15,46 @@ export type Database = {
           content: string | null
           created_at: string
           id: string
+          speaker: string | null
         }
         Insert: {
           chat_id?: string | null
           content?: string | null
           created_at?: string
           id?: string
+          speaker?: string | null
         }
         Update: {
           chat_id?: string | null
           content?: string | null
           created_at?: string
           id?: string
+          speaker?: string | null
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "public_chat_logs_chat_id_fkey"
+            columns: ["chat_id"]
+            isOneToOne: false
+            referencedRelation: "chats"
+            referencedColumns: ["id"]
+          }
+        ]
       }
       chats: {
         Row: {
           created_at: string
-          id: number
+          id: string
           sub_goal_id: string | null
         }
         Insert: {
           created_at?: string
-          id?: number
+          id?: string
           sub_goal_id?: string | null
         }
         Update: {
           created_at?: string
-          id?: number
+          id?: string
           sub_goal_id?: string | null
         }
         Relationships: [
@@ -96,6 +107,8 @@ export type Database = {
           id: string
           is_achievement: boolean | null
           is_final: boolean | null
+          is_now: boolean | null
+          is_pre: boolean | null
           level: number | null
         }
         Insert: {
@@ -105,6 +118,8 @@ export type Database = {
           id?: string
           is_achievement?: boolean | null
           is_final?: boolean | null
+          is_now?: boolean | null
+          is_pre?: boolean | null
           level?: number | null
         }
         Update: {
@@ -114,6 +129,8 @@ export type Database = {
           id?: string
           is_achievement?: boolean | null
           is_final?: boolean | null
+          is_now?: boolean | null
+          is_pre?: boolean | null
           level?: number | null
         }
         Relationships: [
