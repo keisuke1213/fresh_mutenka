@@ -11,10 +11,10 @@ export default function Header() {
                 
                     <ul className={styles.ul}>
                         <li>
-                            <Link href="/app/home">
+                            <Link href="/home">
                                 <img src="/home-icon.png" width="30" height="30"/>
                             </Link>
-                            <Link href="/app/list">
+                            <Link href="/list">
                                 <img src="/person.png" width="30" height="30"/>
                             </Link>
                             <Link href="">
