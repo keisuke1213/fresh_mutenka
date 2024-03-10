@@ -1,0 +1,24 @@
+.container {
+    
+    width: 100vw;
+    height: 100vh;
+    
+}
+.header {
+    z-index: 2;
+    height:55px;
+}
+.main {
+    height: calc(100vh - 55px);
+    width:100%;
+    display: flex;
+}
+.fetchUserId {
+    height: 100%;
+    width:30%;
+}
+.chat {
+    height: 100%;
+    width:80%;
+    background-color: white;
+}

@@ -2,12 +2,9 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    height: 100vh; /* 画面の全高さ */
-    width: 300px; /* サイドナビゲーションの幅 */
-    position: fixed; /* 固定位置 */
-    top: 0; /* 上から0pxの位置 */
-    left: 0; /* 左から0pxの位置 */
-    background-color: #ececec; /* 背景色 */
+    height: 100%; /* 画面の全高さ */
+    width: 80%; /* サイドナビゲーションの幅 */
+    background-color: #72c97f; /* 背景色 */
     color: rgb(0, 0, 0); /* 文字色 */
     padding: 20px; /* 内側の余白 */
   }
@@ -23,7 +20,6 @@
     font-weight: bold;
     border-radius: 10px;
   }
-
   .currentGoal {
     padding: 60px; /* パディングを増やして縦幅を大きくする */
     font-size: 20px;
