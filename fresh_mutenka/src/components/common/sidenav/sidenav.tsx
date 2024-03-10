@@ -57,9 +57,6 @@ export default function Sidenav(props: SidenavProps) {
 
                 return null
             })}
-
-            {/*<div className={`${styles.menuItem} ${styles.currentGoal}`}>今の目標</div>
-            <div className={styles.menuItem}>前の目標</div>*/}
         </div>
     );
 };
