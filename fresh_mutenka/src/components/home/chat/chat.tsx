@@ -49,13 +49,44 @@ export default function Chat() {
       // }
       // getSubGoalId(sub_goal_id);
     }
-    const goals = JSON.parse(res || '');
+    const sub_goal_contents = `[
+        {"level": 10, "goal": "低い椅子やベンチに立って、高さに慣れる"},
+        {"level": 20, "goal": "脚立の最初の段に立ち、安定感を感じる"},
+        {"level": 30, "goal": "脚立の上の段に立ち、手すりを持つことで安心感を得る"},
+        {"level": 40, "goal": "2階の窓から外を見る"},
+        {"level": 50, "goal": "小さな丘や斜面に登り、高い位置からの景色に慣れる"},
+        {"level": 60, "goal": "低いビルの屋上や展望台から景色を眺める"},
+        {"level": 70, "goal": "高い場所にある安全な展望台を訪れる"},
+        {"level": 80, "goal": "ガラス床がある展望台を訪れる"},
+        {"level": 90, "goal": "フェリスホイールや高い観覧車に乗る"},
+        {"level": 100, "goal": "超高所恐怖症を克服すること"}
+      ]`;
+
+    let gptRes : string = ''
+
+    let goals;
+
+    try {
+      goals = JSON.parse(res || '');
+    } catch (e) {
+      // ここで goals をデフォルト値に設定するか、または何も設定しない（スキップする）
+    }
       
       if (Array.isArray(goals)) {
+        fetcher(`/api/goal/getCurrentGoal/${user_id}`)
+        .then(data => {
+          console.log(data); // レスポンスデータを処理
+        })
+        .catch(error => {
+          console.error(error); // エラーを処理
+        });
+        const goalId = getGoalId()
+        gptRes += '設定した目標は次の通りです\n'
         console.log('setContent')
         goals.forEach(({ level, goal }) => {
+          gptRes += level + ":" + goal + '\n'
           const content = goal;
-          const url = `/api/sub_goal/update/setContent/0154f731-faa7-4985-88b2-d8a71e74f606/${level}/${content}`;
+          const url = `/api/sub_goal/update/setContent/${goalId}/${level}/${content}`;
           
           fetcher(url)
             .then(data => {
@@ -65,9 +96,11 @@ export default function Chat() {
               console.error(error); // エラーを処理
             });
         });
-      }
+      } else {
+        gptRes = res || ''
 
-    setMessages([...messages, { user: userText, chatgpt: res !== null ? res : "" }]);
+      }
+    setMessages([...messages, { user: userText, chatgpt: gptRes !== null ? gptRes : "" }]);
     setUserText("")
   }
 
