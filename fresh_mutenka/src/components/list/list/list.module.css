@@ -1,21 +1,31 @@
 .list {
-    border-collapse: collapse;
-  }
-
-.list td{
-    border: solid 1px black;
-    padding: 0;
-    font-weight: bold;
+  border-collapse: collapse;
 }
 
-.finallist{
+.list td {
+  font-weight: bold;
+  border: solid 1px gray;
+}
+
+.level {
+  padding: 15px 50px;
+  text-align: center;
+}
+
+.content {
+  padding: 15px 20px;
+}
+
+.finallist {
+
+}
+
+.nowlist {
   background-color: #9EEFAA;
 }
 
-.nowlist{
-  background-color: pink;
-}
-
-.achievelist{
-	opacity: 0.5;
+.achievelist {
+  opacity: 0.4;
+  color: black;
+  background-color: lightgray;
 }
