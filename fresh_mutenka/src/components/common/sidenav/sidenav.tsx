@@ -65,6 +65,7 @@ export default function Sidenav(props: SidenavProps) {
             {sortedGoals.map((goal: any) => {
                 const finalGoal = goal.is_final === true ? goal.content : null;
                 const nowGoal = goal.is_now === true ? goal.content : null;
+                const nowGoalId = goal.is_now === true ? goal.id : null;
                 const nowLevel = goal.is_now === true ? goal.level : null;
                 const preGoal = goal.is_pre === true ? goal.content : null;
 
@@ -81,6 +82,13 @@ export default function Sidenav(props: SidenavProps) {
                                 <p className={styles.level}>Lv.{nowLevel}</p>
                                 {nowGoal}
                                 <button className={styles.btn} onClick={() => {
+                                    fetcher(`/api/sub_goal/update/achievementSubGoal/${nowGoalId}`)
+                                    .then(data => {
+                                      console.log(data); // レスポンスデータを処理
+                                    })
+                                    .catch(error => {
+                                      console.error(error); // エラーを処理
+                                    });
                                     mutate(null, true);
                                     console.log("再取得しました。");
                                 }}>CLEAR</button>

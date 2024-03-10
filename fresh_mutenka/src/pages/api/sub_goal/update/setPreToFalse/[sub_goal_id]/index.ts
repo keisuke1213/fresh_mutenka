@@ -6,7 +6,6 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse
 ) {
-    console.log('achievementSubGoal')
     const sub_goal_id = Array.isArray(req.query.sub_goal_id) ? '' : req.query.sub_goal_id ?? ''
     const { error } = await supabase
         .from("sub_goals")
