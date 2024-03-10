@@ -3,7 +3,7 @@ import styles from './sidenav.module.css';
 import useSWR from 'swr'
 
 
-const fetcher = url => fetch(url).then(r => r.json())
+const fetcher = (url:string) => fetch(url).then(r => r.json())
 
 type SidenavProps = {
     goalId: string

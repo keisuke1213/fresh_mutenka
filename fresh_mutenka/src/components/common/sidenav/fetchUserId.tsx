@@ -2,7 +2,7 @@
 import React from 'react'
 import useSWR from 'swr'
 import Sidenav from './sidenav'
-const fetcher = url => fetch(url).then(r => r.json())
+const fetcher = (url:string) => fetch(url).then(r => r.json())
 const user_id = "7677e7cd-f1bc-4124-a42d-e80f5da3fedd"
 
 const FetchUserId = () => {
