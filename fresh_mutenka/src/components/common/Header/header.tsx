@@ -11,19 +11,20 @@ export default function Header() {
                 
                     <ul className={styles.ul}>
                         <li>
-                            <Link href="/home">
-                                <img src="/home-icon.png" width="30" height="30"/>
+                            <Link className={styles.home} href="/home">
+                                <img src="/vector.png" width="30" height="30"/>
                             </Link>
-                            <Link href="/list">
+                            <Link className={styles.list} href="/list">
                                 <img src="/person.png" width="30" height="30"/>
                             </Link>
-                            <Link href="">
+                            <Link className={styles.setting} href="">
                                 <img src="/setting.png" width="30" height="30"/>
                             </Link>
                         </li>
                     </ul>
                     <h1 className={styles.h1}>{pathname.replace(/^\//, '')}</h1>
-                    <h1 className={styles.h1}>exposure</h1>
+                    <h1 className={styles.h1}>EXPOSURE</h1>
+
                 
             </header>
     )

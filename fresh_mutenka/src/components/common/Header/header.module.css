@@ -17,3 +17,19 @@
     margin: 0;
     text-transform: uppercase;
 }
+
+.h1 p{
+    margin: 0;
+}
+
+.home{
+    margin:5px;
+}
+
+.list{
+    margin:5px;
+}
+
+.setting{
+    margin: 5px;
+}
