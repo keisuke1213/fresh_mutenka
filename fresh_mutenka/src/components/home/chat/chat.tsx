@@ -36,6 +36,7 @@ export default function Chat() {
 
   const onClickAddText = async () => {
     const res = await getResponse(userText);
+    console.log(res)
     console.log("くりっく");
     mutate();
 
@@ -50,26 +51,28 @@ export default function Chat() {
       // getSubGoalId(sub_goal_id);
     }
     const sub_goal_contents = `[
-        {"level": 10, "goal": "低い椅子やベンチに立って、高さに慣れる"},
-        {"level": 20, "goal": "脚立の最初の段に立ち、安定感を感じる"},
-        {"level": 30, "goal": "脚立の上の段に立ち、手すりを持つことで安心感を得る"},
-        {"level": 40, "goal": "2階の窓から外を見る"},
-        {"level": 50, "goal": "小さな丘や斜面に登り、高い位置からの景色に慣れる"},
-        {"level": 60, "goal": "低いビルの屋上や展望台から景色を眺める"},
-        {"level": 70, "goal": "高い場所にある安全な展望台を訪れる"},
-        {"level": 80, "goal": "ガラス床がある展望台を訪れる"},
-        {"level": 90, "goal": "フェリスホイールや高い観覧車に乗る"},
-        {"level": 100, "goal": "超高所恐怖症を克服すること"}
-      ]`;
-
+      { "level": 10, "goal": "深呼吸をしながら、高い場所の写真を見る" },
+      { "level": 20, "goal": "ビルの上層階から景色を見る" },
+      { "level": 30, "goal": "エスカレーターやエレベーターを使ってみる" },
+      { "level": 40, "goal": "観覧車に乗る" },
+      { "level": 50, "goal": "ビルの屋上や展望台に立ってみる" },
+      { "level": 60, "goal": "山登りをしてみる" },
+      { "level": 70, "goal": "ジェットコースターやフリーフォールなどの高い遊園地の乗り物に乗る" },
+      { "level": 80, "goal": "スカイダイビングのVR体験をする" },
+      { "level": 90, "goal": "飛行機に乗る" },
+      { "level": 100, "goal": "自信を持って高所を経験する" }
+    ]`;
+    const regex = /\`\`\`json\n(\[.*?\])\n\`\`\`/s;
+    const matches = res?.match(regex) || '';
     let gptRes : string = ''
 
     let goals;
 
     try {
-      goals = JSON.parse(res || '');
+      goals = JSON.parse(matches[1]);
     } catch (e) {
       // ここで goals をデフォルト値に設定するか、または何も設定しない（スキップする）
+      console.error(e)
     }
       
       if (Array.isArray(goals)) {
@@ -96,6 +99,7 @@ export default function Chat() {
               console.error(error); // エラーを処理
             });
         });
+        gptRes += 'これでよろしいですか？\n'
       } else {
         gptRes = res || ''
 
