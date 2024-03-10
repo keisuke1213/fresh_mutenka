@@ -1,4 +1,5 @@
 "use client"
+import { useEffect, useState } from 'react';
 import styles from './sidenav.module.css';
 import useSWR from 'swr'
 
@@ -13,31 +14,51 @@ export default function Sidenav(props: SidenavProps) {
 
     const goalId = props.goalId
 
-    const { data, error } = useSWR(`/api/sub_goal/getByGoal/${goalId}`, fetcher)
-    if (!data) {
-        return <div>loading</div>
+    const useUser = (goal_id: string) => {
+        const { data, isLoading, error, mutate } = useSWR(`/api/goal/getById/${goal_id}`, fetcher)
+        return {
+            user: data,
+            isLoading,
+            isError: error,
+            mutate
+        }
     }
 
-    console.log("sub_goals-data", { data })
+    const { user, isLoading, isError, mutate } = useUser(goalId)
+    const [goals, setGoals] = useState<any>(null)
 
-    const filteredGoals = data.goals.filter((goal) => {
+
+    useEffect(() => {
+        console.log("user:", { user })
+        if (user) {
+
+            const updatedLists = user;
+
+            setGoals(updatedLists.goals);
+        }
+    }, [user]);
+
+
+    console.log(user)
+    // console.log("goals", goals.map(goal => goal.content))
+    if (goals === null) {
+        return <div>Loading...</div>;
+    }
+    console.log("goals", goals)
+
+    const filteredGoals = goals.filter((goal) => {
         return goal.is_final || goal.is_now || goal.is_pre
     })
 
-    console.log("filter", { filteredGoals })
-
     const sortedGoals = filteredGoals.sort((a, b) => {
-        // is_finalがtrueのものを最優先で並べる
         if (a.is_final && !b.is_final) return -1;
         if (!a.is_final && b.is_final) return 1;
-
-        // 次にis_currentがtrueのものを優先
         if (a.is_now && !b.is_now) return -1;
         if (!a.is_now && b.is_now) return 1;
-
-        // 最後にis_preがtrueのものを並べる（上記の条件で既にソートされているため、実際にはここはあまり影響しない）
         return 0;
-    })
+    });
+
+
 
 
     return (
@@ -49,20 +70,24 @@ export default function Sidenav(props: SidenavProps) {
 
                 console.log("final", { finalGoal })
                 console.log("final", { nowGoal })
-                console.log("final", { preGoal })                    
+                console.log("final", { preGoal })
 
                 return (
                     <>
-                    <div className={styles.menuContainer}>
-                        {finalGoal && <div className={styles.menuItem}><span className={styles.flag}>🚩</span>{finalGoal}</div>}
-                        <div className={styles.menuBorder} />
-                        {nowGoal && <div className={`${styles.menuItem} ${styles.currentGoal}`}>{nowGoal}</div>}
-                        <div className={styles.menuBorder} />
-                        {preGoal && <div className={styles.menuItem}>{preGoal}</div>}
-                    </div>
+                        <div className={styles.menuContainer}>
+                            {finalGoal && <div className={styles.menuItem}><span className={styles.flag}>🚩</span>{finalGoal}</div>}
+                            <div className={styles.menuBorder} />
+                            {nowGoal && <div className={`${styles.menuItem} ${styles.currentGoal}`}>{nowGoal}</div>}
+                            <div className={styles.menuBorder} />
+                            {preGoal && <div className={styles.menuItem}>{preGoal}</div>}
+                        </div>
                     </>
                 )
             })}
+            <button onClick={() => {
+                mutate(null, true);
+                console.log("再取得しました。");
+            }}></button>
         </div>
     );
 };

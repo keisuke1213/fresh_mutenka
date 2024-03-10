@@ -5,7 +5,6 @@ import useSWR from "swr";
 import { useState } from "react";
 import { getResponse } from "../../../pages/api/chat"
 import { testMethod } from "../../../pages/api/chat";
-import styles from './chat.module.css'
 
 const fetcher = (url: string) => fetch(url).then(r => r.json())
 const user_id = "7677e7cd-f1bc-4124-a42d-e80f5da3fedd"
