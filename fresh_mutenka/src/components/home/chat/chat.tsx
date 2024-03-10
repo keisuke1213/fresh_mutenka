@@ -19,7 +19,7 @@ export default function Chat() {
         console.log(data);
       return data
    }
-   goalCreateApi();
+  //  goalCreateApi();
 
   const [userText, setUserText]   = useState("");
   const [messages, setMessages] = useState<ConversationType[]>([]);
