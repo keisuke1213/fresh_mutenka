@@ -7,8 +7,8 @@ export default function Home() {
   
     return(
         <div>
-             <Header />
-             <FetchUserId />
+             {/* <Header />
+             <FetchUserId /> */}
             {/* <List />  */}
             <Chat />
         </div>
