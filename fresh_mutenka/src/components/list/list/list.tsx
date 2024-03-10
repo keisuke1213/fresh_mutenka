@@ -178,8 +178,8 @@ export default function List(props: ListProps) {
                             const achiveStyle=goal.is_achievement === true ? styles.achievelist : " ";
                             return (
                                 <tr className={`${finalStyle} ${nowStyle} ${achiveStyle}`} key={goal.level}>
-                                    <td className={styles.level}>{goal.level}</td>
-                                    <td className={styles.content}>{goal.content}</td>
+                                    <td>{goal.level}</td>
+                                    <td>{goal.content}</td>
                                 </tr>
                             )
                          })}

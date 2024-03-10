@@ -2,8 +2,9 @@
 import styles from './chat.module.css'
 import { useEffect, useRef } from "react";
 import useSWR from "swr";
-import  { useState } from "react";
-import {getResponse} from "../../../pages/api/chat"
+import { useState } from "react";
+import { getResponse } from "../../../pages/api/chat"
+import { testMethod } from "../../../pages/api/chat";
 
 
 const fetcher = (url: string) => fetch(url).then(r => r.json())
