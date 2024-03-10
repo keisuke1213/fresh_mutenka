@@ -29,7 +29,6 @@ export default function Sidenav(props: SidenavProps) {
 
 
     useEffect(() => {
-        console.log("user:", { user })
         if (user) {
 
             const updatedLists = user;
@@ -66,6 +65,7 @@ export default function Sidenav(props: SidenavProps) {
             {sortedGoals.map((goal: any) => {
                 const finalGoal = goal.is_final === true ? goal.content : null;
                 const nowGoal = goal.is_now === true ? goal.content : null;
+                const nowLevel = goal.is_now === true ? goal.level : null;
                 const preGoal = goal.is_pre === true ? goal.content : null;
 
                 console.log("final", { finalGoal })
@@ -75,19 +75,22 @@ export default function Sidenav(props: SidenavProps) {
                 return (
                     <>
                         <div className={styles.menuContainer}>
-                            {finalGoal && <div className={styles.menuItem}><span className={styles.flag}>🚩</span>{finalGoal}</div>}
+                            {finalGoal && <div className={`${styles.menuItem} ${styles.finalGoal}`}><span className={styles.flag}>🚩</span>{finalGoal}</div>}
                             <div className={styles.menuBorder} />
-                            {nowGoal && <div className={`${styles.menuItem} ${styles.currentGoal}`}>{nowGoal}</div>}
+                            {nowGoal && <div className={`${styles.menuItem} ${styles.currentGoal}`}>
+                                <p className={styles.level}>Lv.{nowLevel}</p>
+                                {nowGoal}
+                                <button className={styles.btn} onClick={() => {
+                                    mutate(null, true);
+                                    console.log("再取得しました。");
+                                }}>CLEAR</button>
+                            </div>}
                             <div className={styles.menuBorder} />
-                            {preGoal && <div className={styles.menuItem}>{preGoal}</div>}
+                            {preGoal && <div className={`${styles.menuItem} ${styles.preGoal}`}>{preGoal}</div>}
                         </div>
                     </>
                 )
             })}
-            <button onClick={() => {
-                mutate(null, true);
-                console.log("再取得しました。");
-            }}></button>
         </div>
     );
 };
