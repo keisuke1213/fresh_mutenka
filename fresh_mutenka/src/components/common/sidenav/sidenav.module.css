@@ -4,14 +4,14 @@
     justify-content: center;
     height: 100%; /* 画面の全高さ */
     width: 80%; /* サイドナビゲーションの幅 */
-    background-color: #72c97f; /* 背景色 */
+    background-color: #e3e3e3; /* 背景色 */
     color: rgb(0, 0, 0); /* 文字色 */
     padding: 20px; /* 内側の余白 */
   }
   
   .menuItem {
     padding: 10px; /* 内側の余白 */
-    margin: 80px 0; /* 外側の余白（上下） */
+    margin: 40px 0; /* 外側の余白（上下） */
     background-color: rgb(151, 238, 177); /* 背景色 */
     color: black; /* テキストの色を黒に変更 */
     display: flex; /* Flexboxを使って中央揃えを行う */
@@ -21,11 +21,38 @@
     border-radius: 10px;
   }
   .currentGoal {
-    padding: 60px; /* パディングを増やして縦幅を大きくする */
+    padding: 60px 8px; /* パディングを増やして縦幅を大きくする */
     font-size: 20px;
   }
 
   .flag{
     font-size: 20px;
     margin-right: 10px;
+  }
+
+  
+  .sidenav {
+    /* 既存のスタイル */
+    position: relative; /* 背景よりも前面に線を表示させるために必要 */
+    z-index: 1; /* このz-indexは背景よりも前面になるように設定 */
+  }
+  
+  .menuItem {
+    /* 既存のスタイル */
+    /* position: relative; */
+    /* z-index: 2; ボックスを線よりも前面に表示させる */
+    width: 100%;
+  }
+  
+  .menuContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .menuBorder {
+    width: 4px;
+    min-height: 40px;
+    background-color: #555;
+    border-radius: 8px;
   }
