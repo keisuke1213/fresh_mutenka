@@ -51,8 +51,8 @@ export default function Sidenav(props: SidenavProps) {
                 console.log("final", { nowGoal })
                 console.log("final", { preGoal })
 
-                if (finalGoal) return <div className={styles.menuItem}>{finalGoal}</div>
-                if (nowGoal) return <div className={styles.menuItem}>{nowGoal}</div>
+                if (finalGoal) return <div className={styles.menuItem}><span className={styles.flag}>🚩</span>{finalGoal}</div>
+                if (nowGoal) return <div className={`${styles.menuItem} ${styles.currentGoal}`}>{nowGoal}</div>
                 if (preGoal) return <div className={styles.menuItem}>{preGoal}</div>
 
                 return null
