@@ -1,3 +1,74 @@
-.button {
-    
+.chatContainer {
+    border: solid 1px gray;
+    height: calc(100vh - 55px);
+    width: ;
+    display: flex;
+    flex-direction: column;
+    /* background-color: black; */
+}
+
+.messageContainer {
+  flex-direction: column-reverse; 
+  overflow-y: auto; 
+  height: 100%; 
+
+}
+.messageWrapper {
+    margin: 10px;
+}
+
+.userWrapper {
+    margin-bottom: 25px;
+}
+
+.nameYou {
+    font-weight: 800;
+    margin-bottom: 4px;
+}
+
+.messageYou {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.chatGPTWrapper {
+    margin-bottom: 25px;
+}
+
+.nameChatGPT {
+    font-weight: 800;
+    margin-bottom: 4px;
+}
+
+.messageChatGPT {
+    margin-top: 0;
+    margin-bottom: 0;
+   
+}
+
+.textWrapper {
+    border: solid 1px gray;
+    border-radius: 5px;
+    margin: 10px;
+    justify-self: start;
+}
+
+.textWrapper input {
+    border: none;
+    width:90%;
+    height: 50px;
+    font-size: 30px;
+}
+
+.textWrapper button {
+    float:right;
+    border: none;
+    background-color: white;
+}
+
+.submitBtn img{
+    float:right;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
 }
