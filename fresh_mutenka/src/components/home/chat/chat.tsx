@@ -99,7 +99,7 @@ export default function Chat() {
               console.error(error); // エラーを処理
             });
         });
-        gptRes += 'これでよろしいですか？\n'
+        gptRes += '頑張ってください！\n'
       } else {
         gptRes = res || ''
 
