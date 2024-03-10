@@ -23,12 +23,30 @@ export default function Chat() {
 
   const [userText, setUserText]   = useState("");
   const [messages, setMessages] = useState<ConversationType[]>([]);
-  
+  const { data, error,  mutate } = useSWR(`/api/goal/getCurrentGoal/${user_id}`, fetcher)
+
+    function getGoalId(){
+    const sub_goal_id = data.goals[0].id
+    console.log("サブゴール", sub_goal_id);
+    return sub_goal_id
+  }
   const onClickAddText = async () => {
     const res = await getResponse(userText);
+    console.log("くりっく");
+    mutate();
+    
     if (res?.includes("おめでとう") ) {
-      await testMethod();
+  
+      getGoalId();
+      // const getSubGoalId = (sub_goal_id:string) =>{
+      //   getGoalId();
+      //   const { data, error } = useSWR(`/api/goal/getCurrentGoal/${sub_goal_id}`, fetcher)
+      //   return data
+      // }
+      // getSubGoalId(sub_goal_id);
     }
+   
+
     setMessages([...messages, {user:userText, chatgpt:res !== null ? res : ""}]);
     setUserText("")
   }
