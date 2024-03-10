@@ -1,6 +1,5 @@
 'use client'
 
-import { Content } from "next/font/google";
 import styles from "./list.module.css"
 import { useState, useEffect } from 'react';
 import useSWR from 'swr';
@@ -109,9 +108,16 @@ const initialLists = [
     },
 ]
 
-export default function List() {
+const fetcher = (url: string | URL | Request) => fetch(url).then(r => r.json())
 
-    const fetcher = (url: string | URL | Request) => fetch(url).then(r => r.json())
+type ListProps = {
+    goalId: string
+}
+
+export default function List(props: ListProps) {
+
+    const goalId = props.goalId
+
     const useUser = (goal_id: string) => {
         const { data, isLoading, error } = useSWR(`/api/goal/getById/${goal_id}`, fetcher)
 
@@ -122,7 +128,7 @@ export default function List() {
         }
     }
 
-    const { user, isLoading, isError } = useUser("3d0a590b-07f6-4dc5-86f0-ba6433024cbe")
+    const { user, isLoading, isError } = useUser(goalId)
     const [goals, setGoals] = useState<any>(null)
 
 

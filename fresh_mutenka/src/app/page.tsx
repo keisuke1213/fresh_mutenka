@@ -4,7 +4,7 @@ import { supabase } from "@/utils/supabase/supabase";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { cookies } from 'next/headers';
-import Login from '@/components/login/login';
+import Login from '@/components/login/loginScreen';
 
 export default async function Page() {
   const supabase = createServerComponentClient({ cookies })
