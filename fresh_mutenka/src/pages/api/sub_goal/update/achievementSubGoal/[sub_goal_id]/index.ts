@@ -10,7 +10,7 @@ export default async function handler(
     const sub_goal_id = Array.isArray(req.query.sub_goal_id) ? '' : req.query.sub_goal_id ?? ''
     const { error } = await supabase
         .from("sub_goals")
-        .update({is_achievement: true, is_now: false, is_pre: true })
+        .update({is_achievement: true})
         .match({id: sub_goal_id})
         .select();
     if (error) return error
