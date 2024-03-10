@@ -1,11 +1,10 @@
 "use client"
 import styles from './chat.module.css'
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import useSWR from "swr";
 import { useState } from "react";
 import { getResponse } from "../../../pages/api/chat"
 import { testMethod } from "../../../pages/api/chat";
-import styles from './chat.module.css'
 
 const fetcher = (url: string) => fetch(url).then(r => r.json())
 const user_id = "7677e7cd-f1bc-4124-a42d-e80f5da3fedd"
@@ -52,23 +51,32 @@ export default function Chat() {
     setMessages([...messages, { user: userText, chatgpt: res !== null ? res : "" }]);
     setUserText("")
   }
+  const chatContainerRef = useRef(null);
+
+  useEffect(() => {
+    if (chatContainerRef.current) {
+      chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
+    }
+  }, [messages]);
   return (
     <div className={styles.chatContainer}>
-      <div className={styles.messageWrapper}>
-        {messages.map((message, index) => {
-          return (
-            <div>
-              <div className={styles.userWrapper}>
-                <p className={styles.nameYou} key={index}>You</p>
-                <p className={styles.messageYou}>{message.user}</p>
+      <div className={styles.messageContainer} ref={chatContainerRef}>
+        <div className={styles.messageWrapper}>
+          {messages.map((message, index) => {
+            return (
+              <div key={index}>
+                <div className={styles.userWrapper}>
+                  <p className={styles.nameYou} key={index}>You</p>
+                  <p className={styles.messageYou}>{message.user}</p>
+                </div>
+                <div className={styles.chatGPTWrapper}>
+                  <p className={styles.nameChatGPT}>Chat</p>
+                  <p className={styles.messageChatGPT}>{message.chatgpt}</p>
+                </div>
               </div>
-              <div className={styles.chatGPTWrapper}>
-                <p className={styles.nameChatGPT}>Chat</p>
-                <p className={styles.messageChatGPT}>{message.chatgpt}</p>
-              </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
       <div className={styles.textWrapper}>
         <input value={userText} type="text" onChange={(event) => setUserText(event.target.value)}></input>
