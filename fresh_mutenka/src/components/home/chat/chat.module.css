@@ -29,6 +29,7 @@
 .messageYou {
     margin-top: 0;
     margin-bottom: 0;
+    white-space: pre-wrap;
 }
 
 .chatGPTWrapper {
@@ -43,6 +44,7 @@
 .messageChatGPT {
     margin-top: 0;
     margin-bottom: 0;
+    white-space: pre-wrap;
    
 }
 
