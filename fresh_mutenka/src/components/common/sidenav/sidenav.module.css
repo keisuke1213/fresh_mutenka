@@ -2,11 +2,8 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    height: 100vh; /* 画面の全高さ */
-    width: 250px; /* サイドナビゲーションの幅 */
-    position: fixed; /* 固定位置 */
-    top: 0; /* 上から0pxの位置 */
-    left: 0; /* 左から0pxの位置 */
+    height: 100%; /* 画面の全高さ */
+    width: 80%; /* サイドナビゲーションの幅 */
     background-color: #72c97f; /* 背景色 */
     color: rgb(0, 0, 0); /* 文字色 */
     padding: 10px; /* 内側の余白 */
@@ -21,7 +18,6 @@
     align-items: center; /* 縦方向の中央揃え */
     justify-content: center; /* 横方向の中央揃え */
   }
-
   .currentGoal {
     padding: 20px; /* パディングを増やして縦幅を大きくする */
   }

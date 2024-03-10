@@ -4,6 +4,7 @@ import useSWR from "swr";
 import  { useState } from "react";
 import {getResponse} from "../../../pages/api/chat"
 import { testMethod } from "../../../pages/api/chat";
+import styles from './chat.module.css'
 
 const fetcher = (url:string) => fetch(url).then(r => r.json())
 const user_id = "7677e7cd-f1bc-4124-a42d-e80f5da3fedd"
@@ -19,7 +20,7 @@ export default function Chat() {
         console.log(data);
       return data
    }
-   goalCreateApi();
+  //  goalCreateApi();
 
   const [userText, setUserText]   = useState("");
   const [messages, setMessages] = useState<ConversationType[]>([]);
@@ -51,7 +52,7 @@ export default function Chat() {
     setUserText("")
   }
   return (
-    <div>
+    <div className={styles.container}>
         <div>
             {messages.map((message,index)=>{
               return (
