@@ -1,0 +1,33 @@
+.container {
+    
+    width: 100vw;
+    height: 100vh;
+    
+}
+.header {
+    z-index: 2;
+    height:55px;
+   
+}
+.main {
+    height: calc(100vh - 55px);
+    width:100%;
+    display: flex;
+    /* background-color: blue; */
+}
+.sidenav {
+    height: 100%;
+    width:30%;
+    /* background-color: black; */
+}
+.listContainer {
+    height: 100%;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.list {
+    justify-self: start;
+    /* background-color: red */
+}
