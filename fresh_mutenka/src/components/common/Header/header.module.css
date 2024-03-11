@@ -33,3 +33,7 @@
 .setting{
     margin: 5px;
 }
+.title{
+    text-transform: none;
+    color: white;
+}

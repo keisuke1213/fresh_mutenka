@@ -110,6 +110,22 @@
   padding: 0;
 }
 
+.btnReload:hover {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  border: none;
+  background-color: white;
+  font-weight: bold;
+  /* color: rgb(151, 238, 177); */
+  color: black;
+  border-radius: 10px;
+  line-height: 50px;
+  width: 50px;
+  height: 50px;
+  padding: 0;
+}
+
 .btnClear {
   position: absolute;
   right: 5px;

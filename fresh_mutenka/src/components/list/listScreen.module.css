@@ -7,6 +7,7 @@
 .header {
     z-index: 2;
     height:55px;
+   
 }
 .main {
     height: calc(100vh - 55px);
@@ -27,6 +28,6 @@
     align-items: center;
 }
 .list {
-    
+    justify-self: start;
     /* background-color: red */
 }

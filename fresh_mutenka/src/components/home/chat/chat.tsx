@@ -188,7 +188,7 @@ export default function Chat() {
         </div>
       </div>
       <div className={styles.textWrapper}>
-        <input value={userText} type="text" onChange={(event) => setUserText(event.target.value)}></input>
+        <input placeholder='Please share your worries ...' value={userText} type="text" onChange={(event) => setUserText(event.target.value)}></input>
         <button className={styles.submitBtn} onClick={onClickAddText}><img src="/button.png" alt="#" /></button>
       </div>
     </div>
