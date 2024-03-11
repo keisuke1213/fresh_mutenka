@@ -1,11 +1,12 @@
 .listWrapper {
-  width: 1000;
-  height: 500px;
+  width: 1000px;
+  height: 700px;
 }
 
 .list {
   border-collapse: collapse;
-  /* height: 500px; */
+  height: 100%;
+  width: 100%;
 }
 
 .list td {
