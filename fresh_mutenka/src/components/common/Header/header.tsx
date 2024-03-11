@@ -22,7 +22,7 @@ export default function Header() {
                             </Link>
                         </li>
                     </ul>
-                    <h1 className={styles.h1}>{pathname.replace(/^\//, '')}</h1>
+                    <h1 className={styles.h1}>{pathname?.replace(/^\//, '')}</h1>
                     <h1 className={styles.h1}>EXPOSURE</h1>
 
                 
