@@ -45,11 +45,11 @@ export default function Sidenav(props: SidenavProps) {
     }
     console.log("goals", goals)
 
-    const filteredGoals = goals.filter((goal) => {
+    const filteredGoals = goals.filter((goal: any) => {
         return goal.is_final || goal.is_now || goal.is_pre
     })
 
-    const sortedGoals = filteredGoals.sort((a, b) => {
+    const sortedGoals = filteredGoals.sort((a:any, b:any) => {
         if (a.is_final && !b.is_final) return -1;
         if (!a.is_final && b.is_final) return 1;
         if (a.is_now && !b.is_now) return -1;
@@ -62,6 +62,11 @@ export default function Sidenav(props: SidenavProps) {
 
     return (
         <div className={styles.sidenav}>
+            <button className={styles.btnReload} onClick={() => {
+                mutate(null, true);
+                console.log("リロードしました。");
+            }}>Reload</button>
+
             {sortedGoals.map((goal: any) => {
                 const finalGoal = goal.is_final === true ? goal.content : null;
                 const nowGoal = goal.is_now === true ? goal.content : null;
@@ -81,14 +86,14 @@ export default function Sidenav(props: SidenavProps) {
                             {nowGoal && <div className={`${styles.menuItem} ${styles.currentGoal}`}>
                                 <p className={styles.level}>Lv.{nowLevel}</p>
                                 {nowGoal}
-                                <button className={styles.btn} onClick={() => {
+                                <button className={styles.btnClear} onClick={() => {
                                     fetcher(`/api/sub_goal/update/achievementSubGoal/${nowGoalId}`)
-                                    .then(data => {
-                                      console.log(data); // レスポンスデータを処理
-                                    })
-                                    .catch(error => {
-                                      console.error(error); // エラーを処理
-                                    });
+                                        .then(data => {
+                                            console.log(data); // レスポンスデータを処理
+                                        })
+                                        .catch(error => {
+                                            console.error(error); // エラーを処理
+                                        });
                                     mutate(null, true);
                                     console.log("再取得しました。");
                                 }}>CLEAR</button>

@@ -94,7 +94,23 @@
   /* border-radius: 8px; */
 }
 
-.btn {
+.btnReload{
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  border: none;
+  background-color: white;
+  font-weight: bold;
+  /* color: rgb(151, 238, 177); */
+  color: rgb(221, 220, 220);
+  border-radius: 10px;
+  line-height: 50px;
+  width: 50px;
+  height: 50px;
+  padding: 0;
+}
+
+.btnClear {
   position: absolute;
   right: 5px;
   bottom: 5px;
@@ -110,7 +126,7 @@
   padding: 0;
 }
 
-.btn:hover {
+.btnClear:hover {
   background-color: white;
   color:  black;
 

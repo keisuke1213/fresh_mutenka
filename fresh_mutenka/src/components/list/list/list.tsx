@@ -142,7 +142,7 @@ export default function List(props: ListProps) {
 
             console.log(goals?.length)
             // console.log(goals?[0].content)
-            const contents = goals?.map(goal => goal.content);
+            const contents = goals?.map((goal: { content: any; }) => goal.content);
             
         }
     }, [user]);
@@ -157,7 +157,7 @@ export default function List(props: ListProps) {
 
     //リストの並び替えはここで行う
 
-    goals.sort((a, b)=>{
+    goals.sort((a: { level: number; }, b: { level: number; })=>{
         if (a.level < b.level) {
             return 1;
           } else {
@@ -168,8 +168,7 @@ export default function List(props: ListProps) {
     console.log("sort",{goals});
 
     return (
-        <div>
-            <div className="component-list">
+            <div className={styles.listWrapper}>
                 <table className={styles.list}>
                     <tbody>
                         {goals.map( (goal:any) => {
@@ -178,14 +177,13 @@ export default function List(props: ListProps) {
                             const achiveStyle=goal.is_achievement === true ? styles.achievelist : " ";
                             return (
                                 <tr className={`${finalStyle} ${nowStyle} ${achiveStyle}`} key={goal.level}>
-                                    <td>{goal.level}</td>
-                                    <td>{goal.content}</td>
+                                    <td className={styles.level}>{goal.level}</td>
+                                    <td className={styles.content}>{goal.content}</td>
                                 </tr>
                             )
                          })}
                     </tbody>
                 </table>
             </div>
-        </div>
     )
 }
